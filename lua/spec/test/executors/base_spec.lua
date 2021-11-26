@@ -12,7 +12,7 @@ describe("Executor", function()
 
   describe("run", function()
     it("is not implemented", function()
-      assert.has_error(function() executor:run() end)
+      assert.has_error(function() executor:run() end, "test_suite is not implemented")
     end)
   end)
 end)
