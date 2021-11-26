@@ -1,0 +1,5 @@
+describe("Sample test", function()
+  it("1+1 = 2", function()
+    assert.equals(1 + 1, 2)
+  end)
+end)
