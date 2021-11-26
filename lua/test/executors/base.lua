@@ -1,7 +1,7 @@
 Executor = {}
 
-function Executor:new(o)
-    o = o or {}
+function Executor:new()
+    local o = {}
     setmetatable(o, self)
     self.__index = self
     return o
