@@ -8,7 +8,7 @@ function Executor:new()
 end
 
 function Executor:run(cmd, args)
-  assert(false, "test_suite is not implemented")
+  assert(false, "run is not implemented")
 end
 
 return Executor
