@@ -28,17 +28,17 @@ describe("Plenary", function()
 
     it("returns stdout", function()
       local result = executor:run("echo", { "hello everyone" })
-      assert.are.equal(
-        vim.inspect({ "hello everyone" }),
-        vim.inspect(result.stdout)
+      assert.are.same(
+        { "hello everyone" },
+        result.stdout
       )
     end)
 
     it("returns list of errors in stderr", function()
       local result = executor:run("ls", { "-3" })
-      assert.are.equal(
-        vim.inspect({ "ls: invalid option -- '3'", "Try 'ls --help' for more information." }),
-        vim.inspect(result.stderr)
+      assert.are.same(
+        { "ls: invalid option -- '3'", "Try 'ls --help' for more information." },
+        result.stderr
       )
     end)
   end)

@@ -6,28 +6,28 @@ describe('utils', function()
       local command = { 'neofetch' }
       local cmd, args = utils.split_command(command)
       assert.are.equal(cmd, 'neofetch')
-      assert.are.equal(vim.inspect(args), vim.inspect({}))
+      assert.are.same(args, {})
     end)
 
     it('returns commands and arguments in list', function()
       local command = { 'neofetch', '--help' }
       local cmd, args = utils.split_command(command)
       assert.are.equal(cmd, 'neofetch')
-      assert.are.equal(vim.inspect(args), vim.inspect({ '--help' }))
+      assert.are.same(args, { '--help' })
     end)
 
     it('returns command in string', function()
       local command = 'neofetch'
       local cmd, args = utils.split_command(command)
       assert.are.equal(cmd, 'neofetch')
-      assert.are.equal(vim.inspect(args), vim.inspect({}))
+      assert.are.same(args, {})
     end)
 
     it('returns command and arguments in string', function()
       local command = 'neofetch --help'
       local cmd, args = utils.split_command(command)
       assert.are.equal(cmd, 'neofetch')
-      assert.are.equal(vim.inspect(args), vim.inspect({ '--help' }))
+      assert.are.same(args, { '--help' })
     end)
 
     it('throws if argument is nil', function()
