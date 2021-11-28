@@ -11,9 +11,14 @@ describe('Gradle', function()
   end)
 
   describe('properties', function()
-    it('supports filetypes', function()
+    it('has correct filetypes', function()
       local filetypes = { 'java' }
       assert.are.same(filetypes, runner.filetypes)
+    end)
+
+    it('has correct root patterns', function()
+      local patterns = { 'gradlew', 'build.gradle', 'settings.gradle' }
+      assert.are.same(patterns, runner.root_patterns)
     end)
   end)
 
