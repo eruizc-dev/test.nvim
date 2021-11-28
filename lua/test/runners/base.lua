@@ -1,10 +1,10 @@
 Runner = {}
 
-function Runner:new()
-  local o = {}
-  setmetatable(o, self)
+function Runner:new(obj)
+  obj = obj or {}
+  setmetatable(obj, self)
   self.__index = self
-  return o
+  return obj
 end
 
 function Runner:test_suite()
