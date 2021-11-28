@@ -1,9 +1,9 @@
-describe('Runner', function()
-  local Runner = require('test.runners.base')
+describe('Gradle', function()
+  local Gradle = require('test.runners.gradle')
   local runner = nil
 
   before_each(function()
-    runner = Runner:new()
+    runner = Gradle:new()
   end)
 
   it('can be instanciated', function()
@@ -16,3 +16,4 @@ describe('Runner', function()
     end)
   end)
 end)
+
