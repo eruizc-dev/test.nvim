@@ -7,8 +7,8 @@ function Executor:new()
     return o
 end
 
-function Executor:run(cmd, args)
-  assert(false, "run is not implemented")
+function Executor:run(command)
+  error('run is not implemented')
 end
 
 return Executor

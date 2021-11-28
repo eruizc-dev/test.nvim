@@ -1,9 +1,12 @@
+local utils = require('test.utils')
 local Executor = require('test.executors.base')
 local Job = require('plenary.job')
 
 Plenary = Executor:new()
 
-function Plenary:run(cmd, args)
+function Plenary:run(command)
+  local cmd, args = utils.split_command(command)
+
   local result = {
     stdout = {},
     stderr = {},
@@ -23,7 +26,7 @@ function Plenary:run(cmd, args)
     on_exit = function(job, code)
       result.exit_code = code
     end
-  }):sync()
+  }):sync(600000)
 
   return result
 end
