@@ -29,16 +29,19 @@ describe('Plenary', function()
     it('returns stdout', function()
       local result = executor:run({ 'echo', 'hello everyone' })
       assert.are.same(
-        { 'hello everyone' },
-        result.stdout
+        { { 'hello everyone', 1 } },
+        result.output
       )
     end)
 
     it('returns list of errors in stderr', function()
       local result = executor:run('ls -3')
       assert.are.same(
-        { "ls: invalid option -- '3'", "Try 'ls --help' for more information." },
-        result.stderr
+        {
+          { "ls: invalid option -- '3'", 2 },
+          { "Try 'ls --help' for more information.", 2 },
+        },
+        result.output
       )
     end)
 
