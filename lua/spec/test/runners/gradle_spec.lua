@@ -1,10 +1,9 @@
+local mock = require('luassert.mock')
+
 describe('Gradle', function()
   local Gradle = require('test.runners.gradle')
-  local runner = nil
-
-  before_each(function()
-    runner = Gradle:new()
-  end)
+  local Executor = mock(require('test.executors.plenary'), true)
+  local runner = Gradle:new()
 
   it('can be instanciated', function()
     assert.is_not_nil(runner)
@@ -23,8 +22,14 @@ describe('Gradle', function()
   end)
 
   describe('test_suite', function()
-    it('is not implemented', function()
-      assert.has_error(function() runner:test_suite() end, 'test_suite is not implemented')
+    it('calls plenary executor with correct command', function()
+      Executor.run.returns({
+        exit_code = 0,
+        stdout = {},
+        stderr = {}
+      })
+      runner:test_suite()
+      assert.stub(Executor.run).was_called_with(Executor, "./gradlew test")
     end)
   end)
 end)
