@@ -1,4 +1,4 @@
-local plenary_job = require('test.executors.plenary')
+local plenary_job = require('test.executors.plenary_job')
 local runner = require('test.runners.base')
 
 Gradle = Runner:new({

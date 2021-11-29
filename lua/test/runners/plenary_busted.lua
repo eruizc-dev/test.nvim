@@ -1,5 +1,5 @@
 local Runner = require('test.runners.base')
-local plenary_job = require('test.executors.plenary') -- TODO: inject
+local plenary_job = require('test.executors.plenary_job') -- TODO: inject
 
 PlenaryBusted = Runner:new({
   filetypes = { 'lua' },

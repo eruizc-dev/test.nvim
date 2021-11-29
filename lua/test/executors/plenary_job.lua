@@ -2,9 +2,9 @@ local utils = require('test.utils')
 local Executor = require('test.executors.base')
 local Job = require('plenary.job')
 
-Plenary = Executor:new()
+PlenaryJob = Executor:new()
 
-function Plenary:run(command)
+function PlenaryJob:run(command)
   local cmd, args = utils.split_command(command)
 
   local result = {
@@ -31,4 +31,4 @@ function Plenary:run(command)
   return result
 end
 
-return Plenary
+return PlenaryJob

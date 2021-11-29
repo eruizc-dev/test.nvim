@@ -2,7 +2,7 @@ local mock = require('luassert.mock')
 
 describe('Gradle', function()
   local Gradle = require('test.runners.gradle')
-  local Executor = mock(require('test.executors.plenary'), true)
+  local Executor = mock(require('test.executors.plenary_job'), true)
   local runner = Gradle:new()
 
   it('can be instanciated', function()
@@ -33,4 +33,3 @@ describe('Gradle', function()
     end)
   end)
 end)
-

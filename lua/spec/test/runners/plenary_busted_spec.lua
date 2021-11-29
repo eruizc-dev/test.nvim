@@ -2,7 +2,7 @@ local mock = require('luassert.mock')
 
 describe('PlenaryBusted', function()
   local PlenaryBusted = require('test.runners.plenary_busted')
-  local Executor = mock(require('test.executors.plenary'), true)
+  local Executor = mock(require('test.executors.plenary_job'), true)
   local runner = PlenaryBusted:new()
 
   it('can be instanciated', function()

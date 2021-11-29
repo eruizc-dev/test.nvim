@@ -1,7 +1,7 @@
 local mock = require('luassert.mock')
 
 describe('Plenary', function()
-  local Plenary = require('test.executors.plenary')
+  local Plenary = require('test.executors.plenary_job')
   local Job = nil
   local executor = nil
 
