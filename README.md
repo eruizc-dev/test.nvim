@@ -49,3 +49,14 @@ List of things I want this plugin to do (not definitive)
     - Grade
     - Rspec
     - Jest
+
+### Similar plugins
+
+Other plugins you can use for testing
+
+ - [vim-test](https://github.com/vim-test/vim-test): TestSuite, TestFile and
+   TestNearest. Ingerates with otehr plugins.
+ - [vim-ultest](https://github.com/rcarriga/vim-ultest): vim-test's extension
+ - [vim-dispatch](https://github.com/tpope/vim-dispatch): run async commands and
+   load output into quickfixlist
+ - [jester](https://github.com/David-Kunz/jester): optimized for Jest framework
