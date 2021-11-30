@@ -7,6 +7,7 @@ PlenaryBusted.root_patterns = { 'lua', '.git' } -- TODO: I don't like this, mayb
 
 function PlenaryBusted:test_suite()
   self.raw_results = self.executor:run({ 'nvim', '--headless', '-c', 'PlenaryBustedDirectory lua' })
+  return self.raw_results
 end
 
 function PlenaryBusted:did_run()
