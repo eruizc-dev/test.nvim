@@ -3,7 +3,13 @@ local mock = require('luassert.mock')
 describe('Gradle', function()
   local Gradle = require('test.runners.gradle')
   local Executor = mock(require('test.executors.plenary_job'), true)
-  local runner = Gradle:new()
+  local executor = nil
+  local runner = nil
+
+  before_each(function()
+    executor = Executor:new()
+    runner = Gradle:new(executor)
+  end)
 
   it('can be instanciated', function()
     assert.is_not_nil(runner)
@@ -29,7 +35,7 @@ describe('Gradle', function()
         stderr = {}
       })
       runner:test_suite()
-      assert.stub(Executor.run).was_called_with(Executor, "./gradlew test")
+      assert.stub(Executor.run).was_called_with(executor, "./gradlew test")
     end)
   end)
 end)

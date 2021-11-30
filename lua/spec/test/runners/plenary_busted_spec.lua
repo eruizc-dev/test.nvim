@@ -3,10 +3,12 @@ local mock = require('luassert.mock')
 describe('PlenaryBusted', function()
   local PlenaryBusted = require('test.runners.plenary_busted')
   local Executor = mock(require('test.executors.plenary_job'), true)
+  local executor = nil
   local runner = nil
 
   before_each(function()
-    runner = PlenaryBusted:new()
+    executor = Executor:new()
+    runner = PlenaryBusted:new(executor)
   end)
 
   it('can be instanciated', function()
@@ -33,7 +35,7 @@ describe('PlenaryBusted', function()
         stderr = {}
       })
       runner:test_suite()
-      assert.stub(Executor.run).was_called_with(Executor, { 'nvim', '--headless', '-c', 'PlenaryBustedDirectory lua' })
+      assert.stub(Executor.run).was_called_with(executor, { 'nvim', '--headless', '-c', 'PlenaryBustedDirectory lua' })
     end)
   end)
 
@@ -48,4 +50,3 @@ describe('PlenaryBusted', function()
     end)
   end)
 end)
-

@@ -1,10 +1,13 @@
 Runner = {}
 
-function Runner:new(obj)
-  obj = obj or {}
-  setmetatable(obj, self)
+function Runner:child()
   self.__index = self
-  return obj
+  return setmetatable({ base = self }, self)
+end
+
+function Runner:new(executor)
+  self.__index = self
+  return setmetatable({ executor = executor }, self)
 end
 
 function Runner:test_suite()
