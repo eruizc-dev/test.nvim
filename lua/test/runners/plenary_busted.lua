@@ -8,8 +8,11 @@ PlenaryBusted = Runner:new({
 
 function PlenaryBusted:test_suite()
   local executor = plenary_job:new() -- TODO: set cwd and executor as dependency
-  local result = executor:run({ 'nvim', '--headless', '-c', 'PlenaryBustedDirectory lua' })
-  return result
+  self.raw_results = executor:run({ 'nvim', '--headless', '-c', 'PlenaryBustedDirectory lua' })
+end
+
+function PlenaryBusted:did_run()
+  return self.raw_results ~= nil
 end
 
 return PlenaryBusted
