@@ -38,4 +38,10 @@ function M.split_command(command)
   end
 end
 
+function M.file_exists(filename)
+  local stat = vim.loop.fs_stat(filename)
+  local exists = stat and stat.type
+  return exists and true or false
+end
+
 return M
