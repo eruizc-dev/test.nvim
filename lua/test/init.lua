@@ -1,13 +1,19 @@
+local Notifier = require('test.notifiers.quickfixlist')
 local Executor = require('test.executors.plenary_job')
 local M = {}
 
 function M.test_suite()
-  local project_root = vim.loop.cwd()
+  local notifier = Notifier:new()
   local executor = Executor:new()
-  local runner_type = require('test.runners.factory').get_runner_for_path(project_root)
+
+  local runner_type = require('test.runners.factory').get_runner_for_path(vim.loop.cwd())
+
   local runner = runner_type:new(executor)
-  local result = runner:test_suite()
-  print(vim.inspect(runner)) -- TODO: remove this
+  runner:test_suite()
+
+  local results = runner:get_results()
+
+  notifier:notify_results(results)
 end
 
 return M
