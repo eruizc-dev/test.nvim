@@ -50,6 +50,29 @@ describe('PlenaryBusted', function()
     end)
   end)
 
+  describe('get_results', function()
+    it('returns empty table for new object', function()
+      assert.are.same({}, runner:get_results())
+    end)
+
+    it('returns list with messages', function()
+      executor.run.returns({
+        exit_code = 0,
+        output = {
+          { 'message 1', 1 },
+          { 'message 2', 1 },
+          { 'message 3', 1 },
+        }
+      })
+      runner:test_suite()
+      local results = runner:get_results()
+      assert.are.same(3, #results)
+      assert.are.same('message 1', results[1])
+      assert.are.same('message 2', results[2])
+      assert.are.same('message 3', results[3])
+    end)
+  end)
+
   describe('get_test_count', function()
     it('has correct shape', function()
       local test_count = runner:get_test_count()

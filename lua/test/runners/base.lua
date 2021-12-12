@@ -10,6 +10,10 @@ function Runner:new(executor)
   return setmetatable({ executor = executor }, self)
 end
 
+function Runner:get_results()
+  error("get_results is not implemented")
+end
+
 function Runner:test_suite()
   error('test_suite is not implemented')
 end
